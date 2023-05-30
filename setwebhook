@@ -1,7 +1,7 @@
 function setWebhook(){
+  var webAppUrl = '...'; //isi link WebApps di sini
   var token = '...'; //isi token di sini
   var url = 'https://api.telegram.org/bot' + token;
-  var webAppUrl = '...'; //isi link WebApps di sini
   var response = UrlFetchApp.fetch(url + '/setWebhook?url=' + webAppUrl);
   Logger.log(response);
 }
