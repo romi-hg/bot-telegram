@@ -1,12 +1,30 @@
-function sendphoto(){
-  var img = 'https://w7.pngwing.com/pngs/954/687/png-transparent-telegram-bot-api-chatbot-security-token-internet-bot-telgram-miscellaneous-sticker-fictional-character-thumbnail.png';
+function sendphoto_from_internet(){ //mengirimkan gambar yang diambil dari website
+  var img = '...'; //isi link gambar di sini
   var token = '...'; //isi token di sini
   var url = 'https://api.telegram.org/bot' + token;
   
   var formData = {
     'method': "sendPhoto",
-    'chat_id': '197134851',
-    'photo': DriveApp.getFileById('1PexZi8w3zMmQ0G7hREyt_b46yrEN8p2W').getBlob()
+    'chat_id': String(id),
+    'photo': img
+  };
+
+  var options = {
+    'method' : 'post',
+    'payload' : formData
+  };
+  UrlFetchApp.fetch(url + '/', options);
+}
+
+function sendphoto_from_GDrive(){
+  var id_gambar = '...'; //isi id gambar yang didapat dari Google Drive di sini
+  var token = '...'; //isi token di sini
+  var url = 'https://api.telegram.org/bot' + token;
+  
+  var formData = {
+    'method': "sendPhoto",
+    'chat_id': String(id),
+    'photo': DriveApp.getFileById(id_gambar).getBlob()
   };
 
   var options = {
