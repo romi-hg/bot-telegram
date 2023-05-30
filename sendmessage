@@ -1,11 +1,13 @@
 //Fungsi berikut akan mengirimkan pesan tanpa ada tombol menunya
 function sendtext(){
+  var id = '...'; //ID user yang akan menerima pesan
+  var pesan = '...'; //isi pesan yang akan ditampilkan ke user
   var token = '...'; //isi token di sini
   var url = 'https://api.telegram.org/bot' + token;
   var formData = {
     'method': "sendMessage",
-    'chat_id': '...', //ID user yang akan menerima pesan
-    'text': '...', //Isi pesan yang akan ditampilkan ke user
+    'chat_id': String(id),
+    'text': pesan
   };
   var options = {
     'method' : 'post',
@@ -16,14 +18,17 @@ function sendtext(){
 
 //Fungsi berikut akan mengirimkan pesan dengan tombol menunya
 function sendtext_with_keyboard(){
+  var id = '...'; //ID user yang akan menerima pesan
+  var pesan = '...'; //isi pesan yang akan ditampilkan ke user
+  var keyboard = [...], //keyboard yang akan ditampilkan.
   var token = '...'; //isi token di sini
   var url = 'https://api.telegram.org/bot' + token;
   var formData = {
     'method': "sendMessage",
-    'chat_id': '...', //ID user yang akan menerima pesan
-    'text': '...', //Isi pesan yang akan ditampilkan ke user
+    'chat_id': id
+    'text': pesan
     'reply_markup': {
-      'keyboard': [...], //keyboard yang akan ditampilkan.
+      'keyboard': keyboard,
       'resize_keyboard': true, //ini membuat ukuran tombol dapat menyesuaikan
       'one_time_keyboard': true //ini membuat tombol menjadi tersembunyi setelah user menekan tombol
     }
